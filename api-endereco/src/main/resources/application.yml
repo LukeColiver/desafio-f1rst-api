@@ -21,3 +21,14 @@ resilience4j:
         automaticTransitionFromOpenToHalfOpenEnabled: true
         waitDurationInOpenState: 60s
         permittedNumberOfCallsInHalfOpenState: 3
+
+
+logging:
+  level:
+    root: INFO  # Defina o nível de log global
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"  # Formato de log no console
+
+  file:
+    name: "logs/myapp.log"        # Caminho e nome do arquivo de log
