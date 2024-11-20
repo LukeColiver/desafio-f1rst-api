@@ -14,4 +14,9 @@ public class CepDTO {
     private String cidade;
     private String estado;
     private String bairro;
+
+    @Override
+    public String toString() {
+        return "CepDTO(cep=" + cep + ", Logradouro=" + logradouro + ", Cidade=" + cidade + ", Dstado=" + estado + ", Bairro=" + bairro + ")";
+    }
 }
