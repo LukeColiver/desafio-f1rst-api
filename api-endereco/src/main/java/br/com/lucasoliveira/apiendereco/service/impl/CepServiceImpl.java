@@ -2,12 +2,15 @@ package br.com.lucasoliveira.apiendereco.service.impl;
 
 import br.com.lucasoliveira.apiendereco.client.BrasilApiClient;
 import br.com.lucasoliveira.apiendereco.client.ViaCepClient;
+import br.com.lucasoliveira.apiendereco.controller.AddressController;
 import br.com.lucasoliveira.apiendereco.dto.PostalCodeDTO;
 import br.com.lucasoliveira.apiendereco.entity.LogApi;
 import br.com.lucasoliveira.apiendereco.service.CepService;
 import br.com.lucasoliveira.apiendereco.service.LogService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,9 @@ import java.time.format.DateTimeFormatter;
 @Service
 @RequiredArgsConstructor
 public class CepServiceImpl implements CepService {
+
+    private static final Logger logger = LoggerFactory.getLogger(CepServiceImpl.class);
+
 
     private final ViaCepClient viaCepClient;
 
@@ -31,30 +37,49 @@ public class CepServiceImpl implements CepService {
     public ResponseEntity<?> fallBackFindAddress(String cep, Exception e){
 
         postalCodeDTO = brasilApiClient.findAddress(cep).to();
+        try {
+            if (postalCodeDTO == null|| postalCodeDTO.getPostalCode() == null) {
+                createLog(postalCodeDTO);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("CEP não foi encontrado.");
+            }
 
-        if (postalCodeDTO == null|| postalCodeDTO.getPostalCode() == null) {
             createLog(postalCodeDTO);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("CEP não foi encontrado.");
+            return ResponseEntity.ok(postalCodeDTO);
+        } catch (Exception exception) {
+            logger.error("Erro ao consultar o endereço para o CEP: {}. Erro: {}", cep, exception.getMessage());
+            createLog(exception);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erro interno no servidor: " + exception.getMessage());
         }
 
-        createLog(postalCodeDTO);
-        return ResponseEntity.ok(postalCodeDTO);
     }
+
 
 
     @CircuitBreaker(name = "endereco", fallbackMethod = "fallBackFindEndereco")
     public ResponseEntity<?> findAddress(String cep) {
         postalCodeDTO = viaCepClient.findAddress(cep).to();
 
-        if (postalCodeDTO == null|| postalCodeDTO.getPostalCode() == null) {
+        try {
+            if (postalCodeDTO == null|| postalCodeDTO.getPostalCode() == null) {
+                createLog(postalCodeDTO);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("CEP não foi encontrado.");
+            }
+
             createLog(postalCodeDTO);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("CEP não foi encontrado.");
+            logger.info("Consulta realizada com sucesso para o CEP: {}. Endereço: {}", cep, postalCodeDTO.toString());
+            return ResponseEntity.ok(postalCodeDTO);
+
+
+        } catch (Exception e) {
+            logger.error("Erro ao consultar o endereço para o CEP: {}. Erro: {}", cep, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erro interno no servidor: " + e.getMessage());
         }
 
-        createLog(postalCodeDTO);
-        return ResponseEntity.ok(postalCodeDTO);
+
     }
 
     public void createLog(PostalCodeDTO cepDTO){
@@ -74,5 +99,14 @@ public class CepServiceImpl implements CepService {
         logService.sendLog(logApi);
     }
 
+
+
+    private void createLog(Exception exception) {
+        LogApi logApi = new LogApi();
+        String apiCallDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss"));
+        logApi.setCallTimestamp(apiCallDate);
+        logApi.setCallData(exception.getMessage());
+        logApi.setResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+    }
 
 }
