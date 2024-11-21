@@ -22,7 +22,7 @@ public class EnderecoController {
     @GetMapping("/{cep}")
     public ResponseEntity<?> getEndereco(@PathVariable("cep") String cep) {
 
-        return cepService.findEndereco(cep);
+        return cepService.findAddress(cep);
     }
 
 }

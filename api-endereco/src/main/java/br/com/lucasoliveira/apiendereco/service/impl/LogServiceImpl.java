@@ -14,8 +14,7 @@ public class LogServiceImpl implements LogService {
 
 
     @Override
-    public void enviarLog(LogApi log) {
-        // Aqui o log é salvo no repositório (banco de dados)
+    public void sendLog(LogApi log) {
         logRepository.save(log);
     }
 

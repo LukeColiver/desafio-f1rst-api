@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EnderecoBrasilApiDTO {
+public class AddressBrasilApiDTO {
 
     private String cep;
     private String street;
@@ -16,13 +16,13 @@ public class EnderecoBrasilApiDTO {
     private String city;
     private String state;
 
-    public CepDTO to(){
-        return CepDTO.builder()
-                .cep(this.cep)
-                .logradouro(this.street)
-                .estado(this.state)
-                .bairro(this.neighborhood)
-                .cidade(this.city)
+    public PostalCodeDTO to(){
+        return PostalCodeDTO.builder()
+                .postalCode(this.cep)
+                .street(this.street)
+                .state(this.state)
+                .neighborhood(this.neighborhood)
+                .city(this.city)
                 .build();
     }
 }
