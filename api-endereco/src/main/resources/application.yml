@@ -3,7 +3,7 @@ spring:
     name: api-endereco
   data:
     mongodb:
-      uri:  mongodb://localhost:27017/api-endereco
+      uri:  mongodb://localhost:27017/logs
 
 server:
   servlet:
