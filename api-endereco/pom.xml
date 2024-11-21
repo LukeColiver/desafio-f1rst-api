@@ -56,38 +56,40 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
+
+		<!-- Spring Boot Starter Test (com JUnit 5) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<!-- Excluindo o JUnit 4 para evitar conflitos -->
+				<exclusion>
+					<groupId>junit</groupId>
+					<artifactId>junit</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-		<!-- JUnit 5 - Framework de testes -->
+
+		<!-- JUnit 5 (JUnit Jupiter) -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.8.2</version> <!-- A versão mais recente do JUnit 5 -->
+			<version>5.7.2</version>  <!-- Ajuste a versão se necessário -->
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.8.2</version>
+			<version>5.7.2</version>  <!-- Ajuste a versão se necessário -->
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Mockito - Biblioteca para mocks -->
+		<!-- JUnit 5 Vintage Engine (se necessário para testes legados) -->
 		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>4.8.1</version> <!-- A versão mais recente do Mockito -->
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Mockito para integração com JUnit 5 -->
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-junit-jupiter</artifactId>
-			<version>4.8.1</version>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>5.7.2</version>  <!-- Ajuste a versão se necessário -->
 			<scope>test</scope>
 		</dependency>
 
@@ -100,9 +102,24 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>5.0.0</version>  <!-- Verifique a versão mais recente -->
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.6.0</version>
+		</dependency>
+
+		<!-- Dependência de MongoDB para testes -->
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+			<version>2.2.0</version> <!-- Versão do MongoDB Embedded para testes -->
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>

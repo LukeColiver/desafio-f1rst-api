@@ -89,11 +89,11 @@ public class CepServiceImpl implements CepService {
         if (cepDTO != null) {
             logApi.setCallTimestamp(apiCallDate);
             logApi.setCallData(cepDTO.toString());
-            logApi.setResponseStatus(HttpStatus.OK.toString());
+            logApi.setResponseStatus(String.valueOf(HttpStatus.OK.value()));
         }else{
             logApi.setCallTimestamp(apiCallDate);
             logApi.setCallData("CEP não foi encontrado.");
-            logApi.setResponseStatus(HttpStatus.NOT_FOUND.toString());
+            logApi.setResponseStatus(String.valueOf(HttpStatus.NOT_FOUND.value()));
         }
 
         logService.sendLog(logApi);
@@ -106,7 +106,7 @@ public class CepServiceImpl implements CepService {
         String apiCallDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss"));
         logApi.setCallTimestamp(apiCallDate);
         logApi.setCallData(exception.getMessage());
-        logApi.setResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+        logApi.setResponseStatus(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
     }
 
 }

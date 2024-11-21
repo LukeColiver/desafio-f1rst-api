@@ -1,19 +1,8 @@
 spring:
-  profiles: test  # Define o perfil como 'test'
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/testdb  # Conexão com MongoDB local
+      database: testdb  # Nome do banco de dados de teste
+  profiles:
+    active: test  # Configura o perfil ativo para 'test'
 
-feign:
-  client:
-    config:
-      viacep:
-        url: https://viacep-mock-api.com  # Mock da API para testes
-      brasilApi:
-        url: https://brasilapi-mock.com  # Mock da outra API para testes
-
-# Outras configurações de teste
-server:
-  port: 8081  # Porta personalizada para o ambiente de teste
-
-logging:
-  level:
-    root: WARN
-    org.springframework.web: ERROR
