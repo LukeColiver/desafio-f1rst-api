@@ -1,3 +1,16 @@
+spring:
+  application:
+    name: api-endereco
+  data:
+    mongodb:
+      uri:  mongodb://localhost:27017/api-endereco
+
+server:
+  servlet:
+    context-path: /api-endereco
+  port: 8080
+
+
 management:
   endpoint:
     health:
@@ -21,3 +34,5 @@ resilience4j:
         automaticTransitionFromOpenToHalfOpenEnabled: true
         waitDurationInOpenState: 60s
         permittedNumberOfCallsInHalfOpenState: 3
+
+
