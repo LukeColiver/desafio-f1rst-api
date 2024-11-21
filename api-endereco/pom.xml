@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>br.com.lucasoliveira</groupId>
 	<artifactId>api-endereco</artifactId>
@@ -61,11 +61,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- JUnit 5 - Framework de testes -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.8.2</version> <!-- A versão mais recente do JUnit 5 -->
+			<version>5.8.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -74,40 +73,30 @@
 			<version>5.8.2</version>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- Mockito - Biblioteca para mocks -->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>4.8.1</version> <!-- A versão mais recente do Mockito -->
+			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- Mockito para integração com JUnit 5 -->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-junit-jupiter</artifactId>
 			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
-
-
-
-		<!-- Dependência do Resilience4j para mocking de circuit breakers (se necessário) -->
 		<dependency>
 			<groupId>io.github.resilience4j</groupId>
 			<artifactId>resilience4j-test</artifactId>
-			<version>1.7.0</version> <!-- Se você estiver utilizando Resilience4j -->
+			<version>1.7.0</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- WireMock para mock de APIs -->
 		<dependency>
 			<groupId>com.github.tomakehurst</groupId>
 			<artifactId>wiremock-jre8</artifactId>
-			<version>2.35.0</version> <!-- Use a versão mais recente -->
+			<version>2.35.0</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -120,7 +109,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -138,15 +126,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M5</version> <!-- Versão do Surefire -->
+				<version>3.0.0-M5</version>
 				<configuration>
 					<includes>
-						<include>**/*Test.java</include> <!-- Certifica-se de que todos os testes sejam encontrados -->
+						<include>**/*Test.java</include>
 					</includes>
-					<useModulePath>false</useModulePath> <!-- Necessário para JUnit 5 -->
+					<useModulePath>false</useModulePath>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
