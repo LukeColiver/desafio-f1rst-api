@@ -10,6 +10,13 @@ server:
     context-path: /api-endereco
   port: 8080
 
+feign:
+  client:
+    config:
+      brasilApi:
+        url: https://brasilapi.com.br/
+      viacep:
+        url: https://viacep.com.br
 
 management:
   endpoint:
