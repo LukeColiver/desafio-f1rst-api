@@ -27,6 +27,6 @@ public class PostalCodeDTO {
 
     @Override
     public String toString() {
-        return "CepDTO(cep=" + postalCode + ", Logradouro=" + street + ", Cidade=" + city + ", Estado=" + state + ", Bairro=" + neighborhood + ")";
+        return "(cep=" + postalCode + ", Logradouro=" + street + ", Cidade=" + city + ", Estado=" + state + ", Bairro=" + neighborhood + ")";
     }
 }
