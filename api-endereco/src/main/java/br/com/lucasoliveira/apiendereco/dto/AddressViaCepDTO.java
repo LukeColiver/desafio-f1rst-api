@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EnderecoViaCepDTO {
+public class AddressViaCepDTO {
 
     private String cep;
     private String logradouro;
@@ -16,13 +16,13 @@ public class EnderecoViaCepDTO {
     private String localidade;
     private String uf;
 
-    public CepDTO to(){
-        return CepDTO.builder()
-                .cep(this.cep)
-                .logradouro(this.logradouro)
-                .estado(this.uf)
-                .bairro(this.bairro)
-                .cidade(this.localidade)
+    public PostalCodeDTO to(){
+        return PostalCodeDTO.builder()
+                .postalCode(this.cep)
+                .street(this.logradouro)
+                .state(this.uf)
+                .neighborhood(this.bairro)
+                .city(this.localidade)
                 .build();
     }
 }

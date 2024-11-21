@@ -91,8 +91,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
-
 		<!-- Dependência do Resilience4j para mocking de circuit breakers (se necessário) -->
 		<dependency>
 			<groupId>io.github.resilience4j</groupId>
@@ -100,6 +98,7 @@
 			<version>1.7.0</version> <!-- Se você estiver utilizando Resilience4j -->
 			<scope>test</scope>
 		</dependency>
+
 		<!-- WireMock para mock de APIs -->
 		<dependency>
 			<groupId>com.github.tomakehurst</groupId>

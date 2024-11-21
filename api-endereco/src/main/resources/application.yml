@@ -42,4 +42,7 @@ resilience4j:
         waitDurationInOpenState: 60s
         permittedNumberOfCallsInHalfOpenState: 3
 
-
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG

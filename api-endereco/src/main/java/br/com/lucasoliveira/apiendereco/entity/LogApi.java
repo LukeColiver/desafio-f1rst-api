@@ -14,7 +14,9 @@ public class LogApi {
 
     @Id
     private String id;
-    private String dataChamada; // Data da chamada
-    private String resultado;   // Resultado da chamada
-    private String timestamp;
+    private String callData;
+    private String responseStatus;
+    private String callTimestamp;
+
+
 }
