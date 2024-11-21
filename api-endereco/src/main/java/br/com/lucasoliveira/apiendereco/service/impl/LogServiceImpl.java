@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LogServiceImpl implements LogService {
@@ -24,5 +26,29 @@ public class LogServiceImpl implements LogService {
         logRepository.save(log);
     }
 
+
+    @Override
+    public List<LogApi> getAllLogs() {
+        logger.info("Buscando todos os logs da API.");
+        return logRepository.findAll();
+    }
+
+    @Override
+    public List<LogApi> getLogsByCallData(String callData) {
+        logger.info("Buscando logs da API por data: {}", callData);
+        return logRepository.findByCallData(callData);
+    }
+
+    @Override
+    public List<LogApi> getLogsByResponseStatus(String responseStatus) {
+        logger.info("Buscando logs da API por status de resposta: {}", responseStatus);
+        return logRepository.findByResponseStatus(responseStatus);
+    }
+
+    @Override
+    public List<LogApi> getLogsByTimestampRange(String startDate, String endDate) {
+        logger.info("Buscando logs da API entre as datas: {} e {}", startDate, endDate);
+        return logRepository.findByCallTimestampBetween(startDate, endDate);
+    }
 
 }
