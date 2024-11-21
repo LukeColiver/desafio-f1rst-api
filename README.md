@@ -30,6 +30,33 @@ Certifique-se de ter os seguintes programas instalados antes de rodar o projeto:
 - **Maven** para gerenciamento de dependências
 - **MongoDB** rodando localmente ou configurado para conexão.
 
+# Projeto ApiEndereco
+
+Este projeto é uma API construída com **Spring Boot** que oferece funcionalidades relacionadas ao gerenciamento de endereços. Ele segue o padrão recomendado para aplicações Spring Boot.
+
+## Estrutura do Projeto
+
+A estrutura do projeto é a seguinte:
+
+### Descrição dos Componentes
+
+- **ApiEnderecoApplication.java**: Classe principal do Spring Boot, responsável por inicializar a aplicação.
+- **EnderecoController.java**: Controller que gerencia os endpoints da API relacionados aos endereços.
+- **CepService.java**: Serviço que contém a lógica de negócios para manipulação dos dados de endereço.
+- **Endereco.java**: Modelo de dados que representa um endereço.
+- **application.properties**: Arquivo de configuração da aplicação, onde são definidas propriedades como portas e configurações específicas do Spring Boot.
+
+## Contribuições
+
+Se você deseja contribuir com este projeto, fique à vontade para fazer um **fork** e enviar um **pull request**. Algumas formas de contribuir incluem:
+
+- Corrigir bugs encontrados.
+- Melhorar a documentação.
+- Adicionar novos recursos ou endpoints.
+- Melhorar os testes e a cobertura de testes.
+
+Agradecemos qualquer contribuição para melhorar o projeto!
+
 ## Como Executar
 
 ### 1. Clonar o Repositório
@@ -40,55 +67,3 @@ Clone este repositório para sua máquina local:
 git clone https://github.com/seu-usuario/api-endereco.git
 
 
-### 2. Navegar para o Diretório do Projeto
-Acesse o diretório do projeto clonado:
-
-bash
-Copiar código
-cd api-endereco
-
-#### 3. Executar o Projeto
-Execute a aplicação com o Maven. O Spring Boot irá iniciar a aplicação no servidor embutido (Tomcat).
-
-bash
-Copiar código
-mvn spring-boot:run
-Alternativamente, se você preferir gerar um arquivo JAR, pode executar os seguintes comandos:
-
-
-
-Estrutura do Projeto
-A estrutura do projeto segue o padrão recomendado para aplicações Spring Boot:
-
-scss
-Copiar código
-src
- ├── main
- │   ├── java
- │   │   └── br
- │   │       └── com
- │   │           └── lucasoliveira
- │   │               └── apiendereco
- │   │                   ├── ApiEnderecoApplication.java  (Classe principal)
- │   │                   ├── controller
- │   │                   │   └── EnderecoController.java  (Controller da API)
- │   │                   ├── service
- │   │                   │   └── CepService.java  (Serviço que contém a lógica de negócios)
- │   │                   ├── model
- │   │                   │   └── Endereco.java  (Modelo de dados)
- │   └── resources
- │       ├── application.properties  (Configurações da aplicação)
- └── test
-     └── java
-         └── br
-             └── com
-                 └── lucasoliveira
-                     └── apiendereco
-                         └── EnderecoControllerTests.java  (Testes do Controller)
-Contribuições
-Se você deseja contribuir com este projeto, fique à vontade para fazer um fork e enviar um pull request. Abaixo estão algumas formas que você pode contribuir:
-
-Corrigir bugs encontrados.
-Melhorar a documentação.
-Adicionar novos recursos ou endpoints.
-Melhorar os testes e a cobertura de testes.
