@@ -38,3 +38,57 @@ Clone este repositório para sua máquina local:
 
 ```bash
 git clone https://github.com/seu-usuario/api-endereco.git
+
+
+### 2. Navegar para o Diretório do Projeto
+Acesse o diretório do projeto clonado:
+
+bash
+Copiar código
+cd api-endereco
+
+#### 3. Executar o Projeto
+Execute a aplicação com o Maven. O Spring Boot irá iniciar a aplicação no servidor embutido (Tomcat).
+
+bash
+Copiar código
+mvn spring-boot:run
+Alternativamente, se você preferir gerar um arquivo JAR, pode executar os seguintes comandos:
+
+
+
+Estrutura do Projeto
+A estrutura do projeto segue o padrão recomendado para aplicações Spring Boot:
+
+scss
+Copiar código
+src
+ ├── main
+ │   ├── java
+ │   │   └── br
+ │   │       └── com
+ │   │           └── lucasoliveira
+ │   │               └── apiendereco
+ │   │                   ├── ApiEnderecoApplication.java  (Classe principal)
+ │   │                   ├── controller
+ │   │                   │   └── EnderecoController.java  (Controller da API)
+ │   │                   ├── service
+ │   │                   │   └── CepService.java  (Serviço que contém a lógica de negócios)
+ │   │                   ├── model
+ │   │                   │   └── Endereco.java  (Modelo de dados)
+ │   └── resources
+ │       ├── application.properties  (Configurações da aplicação)
+ └── test
+     └── java
+         └── br
+             └── com
+                 └── lucasoliveira
+                     └── apiendereco
+                         └── EnderecoControllerTests.java  (Testes do Controller)
+Contribuições
+Se você deseja contribuir com este projeto, fique à vontade para fazer um fork e enviar um pull request. Abaixo estão algumas formas que você pode contribuir:
+
+Corrigir bugs encontrados.
+Melhorar a documentação.
+Adicionar novos recursos ou endpoints.
+Melhorar os testes e a cobertura de testes.
