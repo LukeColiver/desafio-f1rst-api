@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LogApiEndereco {
+public class LogApi {
 
     @Id
     private String id;
