@@ -1,5 +1,6 @@
 package br.com.lucasoliveira.apiendereco.controller;
 
+import br.com.lucasoliveira.apiendereco.exception.PostalCodeNotFoundException;
 import br.com.lucasoliveira.apiendereco.service.CepService;
 
 import org.slf4j.Logger;
@@ -27,9 +28,9 @@ public class AddressController {
     }
 
     @GetMapping("/{cep}")
-    public ResponseEntity<?> getEndereco(@PathVariable("cep") String cep) {
-            logger.info("Iniciando consulta de endereço para o CEP: {}", cep);
-        return cepService.findAddress(cep);
+    public ResponseEntity<?> getEndereco(@PathVariable("cep") String postalCode) throws PostalCodeNotFoundException {
+        logger.info("Iniciando consulta de endereço para o CEP: {}", postalCode);
+        return ResponseEntity.ok(cepService.findAddress(postalCode));
 
 
     }

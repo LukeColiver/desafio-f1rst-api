@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -20,11 +22,17 @@ public class LogServiceImpl implements LogService {
     private final LogRepository logRepository;
 
 
-    @Override
-    public void sendLog(LogApi log) {
+    public void sendLog(String message, String statusCode) {
+        LogApi log = new LogApi();
+        String apiCallDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss"));
+        log.setCallTimestamp(apiCallDate);
+        log.setCallData(message);
+        log.setResponseStatus(statusCode);
         logger.info("Registrando Log da chamada da api na base de dados : Chamada da api retornou : {}", log.getResponseStatus());
         logRepository.save(log);
     }
+
+
 
 
     @Override

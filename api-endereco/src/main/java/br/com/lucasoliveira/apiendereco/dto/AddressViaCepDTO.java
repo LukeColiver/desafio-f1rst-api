@@ -1,5 +1,6 @@
 package br.com.lucasoliveira.apiendereco.dto;
 
+import br.com.lucasoliveira.apiendereco.model.PostalCode;
 import lombok.*;
 
 @Getter
@@ -16,8 +17,8 @@ public class AddressViaCepDTO {
     private String localidade;
     private String uf;
 
-    public PostalCodeDTO to(){
-        return PostalCodeDTO.builder()
+    public PostalCode to(){
+        return PostalCode.builder()
                 .postalCode(this.cep)
                 .street(this.logradouro)
                 .state(this.uf)

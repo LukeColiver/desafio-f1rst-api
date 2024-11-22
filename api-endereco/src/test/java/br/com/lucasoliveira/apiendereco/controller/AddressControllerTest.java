@@ -1,6 +1,6 @@
 package br.com.lucasoliveira.apiendereco.controller;
 
-import br.com.lucasoliveira.apiendereco.dto.PostalCodeDTO;
+import br.com.lucasoliveira.apiendereco.model.PostalCode;
 import br.com.lucasoliveira.apiendereco.service.CepService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ class AddressControllerTest {
     @InjectMocks
     private AddressController addressController;  // O controlador que estamos testando
 
-    private PostalCodeDTO postalCodeDTO;
+    private PostalCode postalCode;
 
     @BeforeEach
     void setUp() {
@@ -34,7 +34,7 @@ class AddressControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(addressController).build();
 
         // Cria um DTO de exemplo para os testes
-        postalCodeDTO = PostalCodeDTO.builder()
+        postalCode = PostalCode.builder()
                 .postalCode("12345-678")
                 .street("Rua Exemplo")
                 .neighborhood("Bairro Exemplo")
@@ -46,7 +46,7 @@ class AddressControllerTest {
     @Test
     void testGetEndereco_Success() throws Exception {
         // Configura o mock do serviço para retornar um endereço com sucesso
-        ResponseEntity responseEntity = new ResponseEntity<>(postalCodeDTO, HttpStatus.OK);
+        ResponseEntity responseEntity = new ResponseEntity<>(postalCode, HttpStatus.OK);
         when(cepService.findAddress("12345-678")).thenReturn(responseEntity);
 
         // Realiza a requisição GET

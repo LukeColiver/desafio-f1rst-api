@@ -1,5 +1,6 @@
-package br.com.lucasoliveira.apiendereco.dto;
+package br.com.lucasoliveira.apiendereco.model;
 
+import br.com.lucasoliveira.apiendereco.dto.AddressViaCepDTO;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -44,14 +45,14 @@ public class AddressViaCepDTOTest {
                 .build();
 
         // Act: Convertendo o objeto AddressViaCepDTO para PostalCodeDTO
-        PostalCodeDTO postalCodeDTO = addressViaCepDTO.to();
+        PostalCode postalCode = addressViaCepDTO.to();
 
         // Assert: Verifica se a conversão foi feita corretamente
-        assertEquals("12345-678", postalCodeDTO.getPostalCode());
-        assertEquals("Rua Exemplo", postalCodeDTO.getStreet());
-        assertEquals("EX", postalCodeDTO.getState());
-        assertEquals("Bairro Exemplo", postalCodeDTO.getNeighborhood());
-        assertEquals("Cidade Exemplo", postalCodeDTO.getCity());
+        assertEquals("12345-678", postalCode.getPostalCode());
+        assertEquals("Rua Exemplo", postalCode.getStreet());
+        assertEquals("EX", postalCode.getState());
+        assertEquals("Bairro Exemplo", postalCode.getNeighborhood());
+        assertEquals("Cidade Exemplo", postalCode.getCity());
     }
 
     // Teste para verificar o comportamento com um objeto AddressViaCepDTO vazio
@@ -76,14 +77,14 @@ public class AddressViaCepDTOTest {
         AddressViaCepDTO addressViaCepDTO = new AddressViaCepDTO();
 
         // Act: Convertendo o objeto vazio para PostalCodeDTO
-        PostalCodeDTO postalCodeDTO = addressViaCepDTO.to();
+        PostalCode postalCode = addressViaCepDTO.to();
 
         // Assert: Verifica se os campos do PostalCodeDTO também estão vazios
-        assertNull(postalCodeDTO.getPostalCode());
-        assertNull(postalCodeDTO.getStreet());
-        assertNull(postalCodeDTO.getState());
-        assertNull(postalCodeDTO.getNeighborhood());
-        assertNull(postalCodeDTO.getCity());
+        assertNull(postalCode.getPostalCode());
+        assertNull(postalCode.getStreet());
+        assertNull(postalCode.getState());
+        assertNull(postalCode.getNeighborhood());
+        assertNull(postalCode.getCity());
     }
 
     // ===================== TESTES DE FALHA =====================
@@ -95,14 +96,14 @@ public class AddressViaCepDTOTest {
         AddressViaCepDTO addressViaCepDTO = new AddressViaCepDTO();
 
         // Act: Convertendo o objeto vazio para PostalCodeDTO
-        PostalCodeDTO postalCodeDTO = addressViaCepDTO.to();
+        PostalCode postalCode = addressViaCepDTO.to();
 
         // Assert: Verifica que os campos do PostalCodeDTO estão nulos devido aos valores nulos de AddressViaCepDTO
-        assertNull(postalCodeDTO.getPostalCode(), "PostalCode não deve ser nulo.");
-        assertNull(postalCodeDTO.getStreet(), "Street não deve ser nulo.");
-        assertNull(postalCodeDTO.getState(), "State não deve ser nulo.");
-        assertNull(postalCodeDTO.getNeighborhood(), "Neighborhood não deve ser nulo.");
-        assertNull(postalCodeDTO.getCity(), "City não deve ser nulo.");
+        assertNull(postalCode.getPostalCode(), "PostalCode não deve ser nulo.");
+        assertNull(postalCode.getStreet(), "Street não deve ser nulo.");
+        assertNull(postalCode.getState(), "State não deve ser nulo.");
+        assertNull(postalCode.getNeighborhood(), "Neighborhood não deve ser nulo.");
+        assertNull(postalCode.getCity(), "City não deve ser nulo.");
     }
 
     // Teste para falha: Verificar se a validação do CEP é feita corretamente (se o CEP tiver formato errado)
@@ -146,10 +147,10 @@ public class AddressViaCepDTOTest {
         AddressViaCepDTO addressViaCepDTO = new AddressViaCepDTO();
 
         // Act: Tentando converter para PostalCodeDTO
-        PostalCodeDTO postalCodeDTO = addressViaCepDTO.to();
+        PostalCode postalCode = addressViaCepDTO.to();
 
         // Assert: Verifica que o PostalCodeDTO gerado a partir de dados nulos está correto
-        assertNull(postalCodeDTO.getPostalCode(), "PostalCode deve ser nulo.");
-        assertNull(postalCodeDTO.getStreet(), "Street deve ser nulo.");
+        assertNull(postalCode.getPostalCode(), "PostalCode deve ser nulo.");
+        assertNull(postalCode.getStreet(), "Street deve ser nulo.");
     }
 }
