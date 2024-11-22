@@ -2,7 +2,7 @@ package br.com.lucasoliveira.apiendereco.service;
 
 import br.com.lucasoliveira.apiendereco.client.BrasilApiClient;
 import br.com.lucasoliveira.apiendereco.client.ViaCepClient;
-import br.com.lucasoliveira.apiendereco.dto.PostalCodeDTO;
+import br.com.lucasoliveira.apiendereco.model.PostalCode;
 import br.com.lucasoliveira.apiendereco.entity.LogApi;
 import br.com.lucasoliveira.apiendereco.service.impl.CepServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,11 +29,11 @@ class CepServiceImplTest {
     @InjectMocks
     private CepServiceImpl cepService;  // A classe que estamos testando
 
-    private PostalCodeDTO postalCodeDTO;
+    private PostalCode postalCode;
 
     @BeforeEach
     void setUp() {
-        postalCodeDTO = PostalCodeDTO.builder()
+        postalCode = PostalCode.builder()
                 .postalCode("12345-678")
                 .street("Rua Exemplo")
                 .city("Cidade Exemplo")
@@ -110,7 +110,7 @@ class CepServiceImplTest {
     @Test
     void testCreateLog_Success() {
         // Chama o método de criação de log
-        cepService.createLog(postalCodeDTO);
+        cepService.createLog(postalCode);
 
         // Verifica se o log foi enviado corretamente
         verify(logService, times(1)).sendLog(any(LogApi.class));
