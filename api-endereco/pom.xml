@@ -40,6 +40,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 		</dependency>
@@ -48,65 +53,27 @@
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 
-		<!-- Spring Boot Starter Test (com JUnit 5) -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<!-- Excluindo o JUnit 4 para evitar conflitos -->
-				<exclusion>
-					<groupId>junit</groupId>
-					<artifactId>junit</artifactId>
-				</exclusion>
-			</exclusions>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
 		</dependency>
 
-		<!-- JUnit 5 (JUnit Jupiter) -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.7.2</version>  <!-- Ajuste a versão se necessário -->
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.7.2</version>  <!-- Ajuste a versão se necessário -->
-			<scope>test</scope>
-		</dependency>
 
-		<!-- JUnit 5 Vintage Engine (se necessário para testes legados) -->
-		<dependency>
-			<groupId>org.junit.vintage</groupId>
-			<artifactId>junit-vintage-engine</artifactId>
-			<version>5.7.2</version>  <!-- Ajuste a versão se necessário -->
-			<scope>test</scope>
-		</dependency>
 
-		<!-- Dependência do Resilience4j para mocking de circuit breakers (se necessário) -->
+
 		<dependency>
 			<groupId>io.github.resilience4j</groupId>
 			<artifactId>resilience4j-test</artifactId>
-			<version>1.7.0</version> <!-- Se você estiver utilizando Resilience4j -->
+			<version>1.7.0</version>
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>5.0.0</version>  <!-- Verifique a versão mais recente -->
-			<scope>test</scope>
-		</dependency>
+
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -114,11 +81,21 @@
 			<version>2.6.0</version>
 		</dependency>
 
-		<!-- Dependência de MongoDB para testes -->
+
+
+
+		<!-- Dependência do JUnit 5 para testes unitários -->
 		<dependency>
-			<groupId>de.flapdoodle.embed</groupId>
-			<artifactId>de.flapdoodle.embed.mongo</artifactId>
-			<version>2.2.0</version> <!-- Versão do MongoDB Embedded para testes -->
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.8.2</version> <!-- Certifique-se de usar uma versão compatível -->
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.8.2</version>
 			<scope>test</scope>
 		</dependency>
 

@@ -37,11 +37,11 @@ resilience4j:
       endereco:
         slidingWindowType: COUNT_BASED
         registerHealthIndicator: true
-        failureRateThreshold: 50
-        minimumNumberOfCalls: 5
+        failureRateThreshold: 100
+        minimumNumberOfCalls: 1
         automaticTransitionFromOpenToHalfOpenEnabled: true
         waitDurationInOpenState: 60s
-        permittedNumberOfCallsInHalfOpenState: 3
+        permittedNumberOfCallsInHalfOpenState: 1
 
 logging:
   level:
