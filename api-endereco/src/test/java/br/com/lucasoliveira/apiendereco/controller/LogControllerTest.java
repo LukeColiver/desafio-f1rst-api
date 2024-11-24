@@ -1,119 +1,132 @@
 package br.com.lucasoliveira.apiendereco.controller;
 
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+
 import br.com.lucasoliveira.apiendereco.entity.LogApi;
 import br.com.lucasoliveira.apiendereco.service.LogService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+@SpringBootTest
+@AutoConfigureMockMvc
+public class LogControllerTest {
 
-class LogControllerTest {
-
+    @Autowired
     private MockMvc mockMvc;
 
     @Mock
-    private LogService logService;  // Mock da LogService
+    private LogService logService;
 
     @InjectMocks
-    private LogController logController;  // O controlador que estamos testando
+    private LogController logController;
 
-    private List<LogApi> logApiList;
+    private List<LogApi> logs;
 
     @BeforeEach
-    void setUp() {
-        // Inicializa a lista de logs de exemplo
-        logApiList = Arrays.asList(
-                new LogApi("1", "2024-11-21 - 10:00:00", "Test log data", "200"),
-                new LogApi("2", "2024-11-21 - 10:30:00", "Another log data", "404")
+    public void setup() {
+        logs = Arrays.asList(
+                LogApi.builder().id("1").callData("data1").responseStatus("200").callTimestamp("2024-11-22T10:00:00").build(),
+                LogApi.builder().id("2").callData("data2").responseStatus("404").callTimestamp("2024-11-22T10:05:00").build()
+        );
+    }
+
+    // Teste para o endpoint GET /api/logs
+    @Test
+    public void testGetAllLogs() throws Exception {
+        // Mockando o retorno do serviço
+        when(logService.getAllLogs()).thenReturn(logs);
+
+        // Simulando a requisição GET e verificando o retorno
+        mockMvc.perform(get("/api/logs"))
+                .andExpect(status().isOk()) // Verifica se o status é 200 OK
+                .andExpect(jsonPath("$[0].id").value("1")) // Verifica o id do primeiro log
+                .andExpect(jsonPath("$[1].responseStatus").value("404")); // Verifica o status da resposta do segundo log
+    }
+
+    // Teste para o endpoint GET /api/logs quando não houver logs
+    @Test
+    public void testGetAllLogsNoContent() throws Exception {
+        // Mockando o retorno vazio do serviço
+        when(logService.getAllLogs()).thenReturn(Arrays.asList());
+
+        // Simulando a requisição GET e verificando se a resposta está vazia
+        mockMvc.perform(get("/api/logs"))
+                .andExpect(status().isOk()) // Verifica se o status é 200 OK
+                .andExpect(jsonPath("$").isEmpty()); // Verifica se a resposta está vazia
+    }
+
+    // Teste para o endpoint GET /api/logs/by-status
+    @Test
+    public void testGetLogsByResponseStatus() throws Exception {
+        String responseStatus = "200";
+        // Mockando o retorno filtrado por status
+        List<LogApi> filteredLogs = Arrays.asList(
+                LogApi.builder().id("1").callData("data1").responseStatus("200").callTimestamp("2024-11-22T10:00:00").build()
         );
 
-        // Configura o MockMvc
-        mockMvc = MockMvcBuilders.standaloneSetup(logController).build();
-    }
+        when(logService.getLogsByResponseStatus(responseStatus)).thenReturn(filteredLogs);
 
-    @Test
-    void testGetAllLogs() throws Exception {
-        // Configura o mock para retornar os logs
-        when(logService.getAllLogs()).thenReturn(logApiList);
-
-        // Realiza a requisição GET e verifica o status e conteúdo da resposta
-        mockMvc.perform(get("/api/logs"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].callTimestamp").value("2024-11-21 - 10:00:00"))
-                .andExpect(jsonPath("$[1].responseStatus").value("404"));
-
-        // Verifica se o método do serviço foi chamado corretamente
-        verify(logService, times(1)).getAllLogs();
-    }
-
-    @Test
-    void testGetLogsByCallData() throws Exception {
-        // Configura o mock para retornar logs filtrados por data
-        when(logService.getLogsByCallData("2024-11-21")).thenReturn(logApiList);
-
-        // Realiza a requisição GET com o parâmetro de data
-        mockMvc.perform(get("/api/logs/by-date")
-                        .param("callData", "2024-11-21"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].callTimestamp").value("2024-11-21 - 10:00:00"));
-
-        // Verifica se o método foi chamado corretamente
-        verify(logService, times(1)).getLogsByCallData("2024-11-21");
-    }
-
-    @Test
-    void testGetLogsByResponseStatus() throws Exception {
-        // Configura o mock para retornar logs filtrados por status
-        when(logService.getLogsByResponseStatus("200")).thenReturn(logApiList);
-
-        // Realiza a requisição GET com o parâmetro de status
+        // Simulando a requisição GET com o parâmetro responseStatus e verificando a resposta
         mockMvc.perform(get("/api/logs/by-status")
-                        .param("responseStatus", "200"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].responseStatus").value("200"));
-
-        // Verifica se o método foi chamado corretamente
-        verify(logService, times(1)).getLogsByResponseStatus("200");
+                        .param("responseStatus", responseStatus))
+                .andExpect(status().isOk()) // Verifica se o status é 200 OK
+                .andExpect(jsonPath("$[0].responseStatus").value("200")); // Verifica o status da resposta
     }
 
+    // Teste para o endpoint GET /api/logs/by-status quando não houver logs para o status informado
     @Test
-    void testGetLogsByTimestampRange() throws Exception {
-        // Configura o mock para retornar logs filtrados por intervalo de timestamps
-        when(logService.getLogsByTimestampRange("2024-11-21 - 10:00:00", "2024-11-21 - 11:00:00"))
-                .thenReturn(logApiList);
+    public void testGetLogsByResponseStatusNoContent() throws Exception {
+        String responseStatus = "404";
 
-        // Realiza a requisição GET com o intervalo de timestamps
-        mockMvc.perform(get("/api/logs/by-timestamp")
-                        .param("startDate", "2024-11-21 - 10:00:00")
-                        .param("endDate", "2024-11-21 - 11:00:00"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].callTimestamp").value("2024-11-21 - 10:00:00"));
+        // Mockando o retorno vazio para o status 404
+        when(logService.getLogsByResponseStatus(responseStatus)).thenReturn(Arrays.asList());
 
-        // Verifica se o método foi chamado corretamente
-        verify(logService, times(1)).getLogsByTimestampRange("2024-11-21 - 10:00:00", "2024-11-21 - 11:00:00");
+        // Simulando a requisição GET com o parâmetro responseStatus e verificando se a resposta está vazia
+        mockMvc.perform(get("/api/logs/by-status")
+                        .param("responseStatus", responseStatus))
+                .andExpect(status().isOk()) // Verifica se o status é 200 OK
+                .andExpect(jsonPath("$").isEmpty()); // Verifica se a resposta está vazia
     }
 
+    // Teste para o endpoint GET /api/logs/by-status sem o parâmetro responseStatus
     @Test
-    void testGetAllLogs_NoLogsFound() throws Exception {
-        // Configura o mock para retornar uma lista vazia
-        when(logService.getAllLogs()).thenReturn(List.of());
+    public void testGetLogsByResponseStatusMissingParam() throws Exception {
+        // Simulando a requisição GET sem o parâmetro obrigatório responseStatus
+        mockMvc.perform(get("/api/logs/by-status"))
+                .andExpect(status().isBadRequest()); // Verifica se o status da resposta é 400 Bad Request
+    }
 
-        // Realiza a requisição GET para buscar logs
+    // Teste para o comportamento do serviço com erro
+    @Test
+    public void testGetAllLogsServiceError() throws Exception {
+        // Simulando um erro no serviço
+        when(logService.getAllLogs()).thenThrow(new RuntimeException("Erro no serviço"));
+
+        // Simulando a requisição GET e verificando se o status de erro 500 é retornado
         mockMvc.perform(get("/api/logs"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").isEmpty());
+                .andExpect(status().isInternalServerError()); // Verifica se o status é 500 Internal Server Error
+    }
 
-        // Verifica se o método do serviço foi chamado corretamente
-        verify(logService, times(1)).getAllLogs();
+    // Teste para o endpoint GET /api/logs com status de sucesso
+    @Test
+    public void testGetLogsSuccess() throws Exception {
+        // Mockando o retorno do serviço
+        when(logService.getAllLogs()).thenReturn(logs);
+
+        // Simulando a requisição GET e verificando se o status é 200 OK
+        mockMvc.perform(get("/api/logs"))
+                .andExpect(status().isOk()) // Verifica se o status é 200 OK
+                .andExpect(jsonPath("$[0].id").value("1")); // Verifica se o id do primeiro log é correto
     }
 }

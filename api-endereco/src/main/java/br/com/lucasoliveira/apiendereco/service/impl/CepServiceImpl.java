@@ -29,7 +29,8 @@ public class CepServiceImpl implements CepService {
     private PostalCode postalCode;
 
 
-    public PostalCode fallBackFindAddress(String postalCode, Exception e) throws PostalCodeNotFoundException {
+    public PostalCode fallbackMethod(String postalCode, Exception e) throws PostalCodeNotFoundException {
+        logger.error("Falha ao buscar CEP {} via ViaCep, tentaremos via BrasilApi. Erro: {}", postalCode, e.getMessage());
 
         this.postalCode = brasilApiClient.findAddress(postalCode).to();
 
@@ -46,9 +47,10 @@ public class CepServiceImpl implements CepService {
     }
 
 
-    @CircuitBreaker(name = "endereco", fallbackMethod = "fallBackFindEndereco")
+    @CircuitBreaker(name = "endereco", fallbackMethod = "fallbackMethod")
     public PostalCode findAddress(String postalCode) throws PostalCodeNotFoundException {
         this.postalCode = viaCepClient.findAddress(postalCode).to();
+
 
         if (this.postalCode == null || this.postalCode.getPostalCode() == null) {
             throw new PostalCodeNotFoundException("Postal code " + postalCode + " not found.");
