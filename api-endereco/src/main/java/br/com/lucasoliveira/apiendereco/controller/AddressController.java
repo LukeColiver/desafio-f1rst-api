@@ -3,18 +3,18 @@ package br.com.lucasoliveira.apiendereco.controller;
 import br.com.lucasoliveira.apiendereco.exception.PostalCodeNotFoundException;
 import br.com.lucasoliveira.apiendereco.service.CepService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping
 @RequiredArgsConstructor
+@Tag(name = "Api Endereco", description = "Api Endereco management APIs")
+@CrossOrigin(origins = "http://localhost:8080")
 public class AddressController {
 
     private static final Logger logger = LoggerFactory.getLogger(AddressController.class);

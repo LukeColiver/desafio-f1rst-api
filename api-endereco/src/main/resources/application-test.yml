@@ -1,8 +1,0 @@
-spring:
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/testdb  # Conexão com MongoDB local
-      database: testdb  # Nome do banco de dados de teste
-  profiles:
-    active: test  # Configura o perfil ativo para 'test'
-
