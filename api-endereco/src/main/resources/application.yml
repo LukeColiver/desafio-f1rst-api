@@ -48,8 +48,15 @@ logging:
     root: INFO
     com.example: DEBUG
 
+
+
+api-endereco:
+  openapi:
+    dev-url: http://localhost:8080/api-endereco
 springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
   api-docs:
-    path: /api-docs
+    path: /api-endereco-api-docs
+  swagger-ui:
+    filter: true
+    path: /api-endereco-documentation
+    tryItOutEnabled: true
