@@ -37,7 +37,6 @@ class AddressControllerTest {
 
     @Test
     void whenValidPostalCode_thenReturnsAddress() throws Exception {
-        // Prepare the mock response from the CepService
         PostalCode mockPostalCode = PostalCode.builder()
                 .postalCode("12345-678")
                 .street("Rua Exemplo")
@@ -48,10 +47,9 @@ class AddressControllerTest {
 
         when(cepService.findAddress("12345-678")).thenReturn(mockPostalCode);
 
-        // Perform the request and assert the result
         mockMvc.perform(get("/12345-678"))
-                .andExpect(status().isOk())  // Verifica o status 200 OK
-                .andExpect(content().json(new ObjectMapper().writeValueAsString(mockPostalCode)));  // Verifica a resposta JSON
+                .andExpect(status().isOk())
+                .andExpect(content().json(new ObjectMapper().writeValueAsString(mockPostalCode)));
     }
 
 

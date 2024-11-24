@@ -7,11 +7,11 @@ import java.util.List;
 public interface LogService {
     void sendLog(String message, String statusCode);
 
-    List<LogApi> getAllLogs(); // Busca geral
+    List<LogApi> getAllLogs();
 
-    List<LogApi> getLogsByCallData(String callData); // Busca por data
+    List<LogApi> getLogsByCallData(String callData);
 
-    List<LogApi> getLogsByResponseStatus(String responseStatus); // Busca por status
+    List<LogApi> getLogsByResponseStatus(String responseStatus);
 
     List<LogApi> getLogsByTimestampRange(String startDate, String endDate);
 
