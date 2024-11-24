@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/addressAPI/api/logs"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "status": "success",
+      "message": "Logs retrieved successfully",
+      "data": [
+        {
+          "id": "6740c231afac0c06f25cb575",
+          "callData": "(cep=09080-301, Logradouro=Rua das Figueiras, Cidade=Santo André, Estado=SP, Bairro=Campestre)",
+          "responseStatus": "200",
+          "callTimestamp": "22/11/2024 - 14:40:50"
+        }
+      ],
+      "timestamp": "24/11/2024 18:51:00"
+    }
+  }
+}

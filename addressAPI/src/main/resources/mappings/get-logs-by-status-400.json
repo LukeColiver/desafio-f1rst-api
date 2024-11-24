@@ -1,0 +1,43 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/addressAPI/api/logs/by-status",
+    "queryParameters": {
+      "responseStatus": {
+        "equalTo": "400"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": [
+      {
+        "id": "6740beb0a7146b0deca24d1e",
+        "callData": "Postal code not found: Postal code 09080333 not found.",
+        "responseStatus": "400",
+        "callTimestamp": "22/11/2024 - 14:26:02"
+      },
+      {
+        "id": "6740bf7512bcb6531627e7d2",
+        "callData": "Postal code not found: Postal code 09080333 not found.",
+        "responseStatus": "400",
+        "callTimestamp": "22/11/2024 - 14:29:25"
+      },
+      {
+        "id": "6740c5a227fb180cae89ed12",
+        "callData": "Postal code not found: Postal code 09080399 not found.",
+        "responseStatus": "400",
+        "callTimestamp": "22/11/2024 - 14:55:46"
+      },
+      {
+        "id": "6740c62807b529048d165e47",
+        "callData": "Postal code not found: Postal code 09080399 not found.",
+        "responseStatus": "400",
+        "callTimestamp": "22/11/2024 - 14:58:00"
+      }
+    ]
+  }
+}
