@@ -22,12 +22,6 @@ public class LogController {
         return ResponseEntity.ok(logs);
     }
 
-    // Endpoint para buscar logs por data
-    @GetMapping("/by-date")
-    public ResponseEntity<List<LogApi>> getLogsByCallData(@RequestParam String callData) {
-        List<LogApi> logs = logService.getLogsByCallData(callData);
-        return ResponseEntity.ok(logs);
-    }
 
     // Endpoint para buscar logs por status
     @GetMapping("/by-status")
@@ -36,11 +30,5 @@ public class LogController {
         return ResponseEntity.ok(logs);
     }
 
-    // Endpoint para buscar logs por intervalo de timestamp
-    @GetMapping("/by-timestamp")
-    public ResponseEntity<List<LogApi>> getLogsByTimestampRange(
-            @RequestParam String startDate, @RequestParam String endDate) {
-        List<LogApi> logs = logService.getLogsByTimestampRange(startDate, endDate);
-        return ResponseEntity.ok(logs);
-    }
+
 }

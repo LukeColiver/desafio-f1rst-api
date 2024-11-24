@@ -1,4 +1,4 @@
-package br.com.lucasoliveira.apiendereco.dto;
+package br.com.lucasoliveira.apiendereco.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PostalCodeDTO {
+public class PostalCode {
 
     @JsonProperty("Cep")
     private String postalCode;

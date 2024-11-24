@@ -5,7 +5,7 @@ import br.com.lucasoliveira.apiendereco.entity.LogApi;
 import java.util.List;
 
 public interface LogService {
-    void sendLog(LogApi log);
+    void sendLog(String message, String statusCode);
 
     List<LogApi> getAllLogs(); // Busca geral
 
@@ -14,4 +14,6 @@ public interface LogService {
     List<LogApi> getLogsByResponseStatus(String responseStatus); // Busca por status
 
     List<LogApi> getLogsByTimestampRange(String startDate, String endDate);
+
+
 }
