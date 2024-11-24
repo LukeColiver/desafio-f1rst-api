@@ -1,8 +1,8 @@
 package br.com.lucasoliveira.apiendereco.service;
 
-import br.com.lucasoliveira.apiendereco.dto.CepDTO;
-import org.springframework.http.ResponseEntity;
+import br.com.lucasoliveira.apiendereco.model.PostalCode;
+import br.com.lucasoliveira.apiendereco.exception.PostalCodeNotFoundException;
 
 public interface CepService {
-    ResponseEntity<?> findEndereco(String cep);
+    PostalCode findAddress(String postalCode) throws PostalCodeNotFoundException;
 }

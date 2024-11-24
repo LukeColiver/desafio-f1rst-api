@@ -1,3 +1,24 @@
+spring:
+  application:
+    name: api-endereco
+  data:
+    mongodb:
+      uri:  mongodb://localhost:27017/logs
+
+server:
+  servlet:
+    context-path: /api-endereco
+  port: 8080
+
+feign:
+  client:
+    config:
+      brasilApi:
+        url: https://brasilapi.com.br/
+      viacep:
+        url: https://viacep.com.br
+
+
 management:
   endpoint:
     health:
@@ -16,8 +37,19 @@ resilience4j:
       endereco:
         slidingWindowType: COUNT_BASED
         registerHealthIndicator: true
-        failureRateThreshold: 50
-        minimumNumberOfCalls: 5
+        failureRateThreshold: 100
+        minimumNumberOfCalls: 1
         automaticTransitionFromOpenToHalfOpenEnabled: true
         waitDurationInOpenState: 60s
-        permittedNumberOfCallsInHalfOpenState: 3
+        permittedNumberOfCallsInHalfOpenState: 1
+
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
