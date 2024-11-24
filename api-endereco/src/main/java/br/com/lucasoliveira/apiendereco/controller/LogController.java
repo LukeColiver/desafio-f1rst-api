@@ -15,7 +15,6 @@ public class LogController {
 
     private final LogService logService;
 
-    // Endpoint para buscar todos os logs
     @GetMapping
     public ResponseEntity<List<LogApi>> getAllLogs() {
         List<LogApi> logs = logService.getAllLogs();
@@ -23,7 +22,6 @@ public class LogController {
     }
 
 
-    // Endpoint para buscar logs por status
     @GetMapping("/by-status")
     public ResponseEntity<List<LogApi>> getLogsByResponseStatus(@RequestParam String responseStatus) {
         List<LogApi> logs = logService.getLogsByResponseStatus(responseStatus);
