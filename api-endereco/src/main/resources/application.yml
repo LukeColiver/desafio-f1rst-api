@@ -1,13 +1,13 @@
 spring:
   application:
-    name: api-endereco
+    name: addressAPI
   data:
     mongodb:
       uri:  mongodb://localhost:27017/logs
 
 server:
   servlet:
-    context-path: /api-endereco
+    context-path: /addressAPI
   port: 8080
 
 feign:
@@ -34,7 +34,7 @@ management:
 resilience4j:
   circuitbreaker:
     instances:
-      endereco:
+      addressAPI:
         slidingWindowType: COUNT_BASED
         registerHealthIndicator: true
         failureRateThreshold: 100
@@ -50,7 +50,7 @@ logging:
 
 
 
-api-endereco:
+addressAPI:
   openapi:
     dev-url: http://localhost:8080/api-endereco
 springdoc:

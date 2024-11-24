@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.lucasoliveira</groupId>
-	<artifactId>api-endereco</artifactId>
+	<artifactId>addressAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>api-endereco</name>
+	<name>addressAPI</name>
 	<description>Desafio API endereco</description>
 	<url/>
 	<licenses>
