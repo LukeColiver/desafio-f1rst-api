@@ -99,4 +99,7 @@ Para rodar o projeto com Maven, navegue até a pasta do projeto e execute o segu
 ```bash
 mvn spring-boot:run
 ```
+### Desenho da Aplicação
+
+![addressAPI drawio](https://github.com/user-attachments/assets/2130ddc5-de33-4db2-b469-c44de31ac389)
 
