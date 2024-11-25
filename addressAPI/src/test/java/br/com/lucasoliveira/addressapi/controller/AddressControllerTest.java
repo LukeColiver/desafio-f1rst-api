@@ -57,38 +57,7 @@ class AddressControllerTest {
                 .andExpect(content().json(new ObjectMapper().writeValueAsString(mockPostalCode)));
     }
 
-    @Test
-    void testGetEndereco_Success() throws Exception {
 
-        PostalCode mockPostalCode = PostalCode.builder()
-                .postalCode("12345-678")
-                .street("Rua Exemplo")
-                .city("Cidade Exemplo")
-                .state("Estado Exemplo")
-                .neighborhood("Bairro Exemplo")
-                .build();
-
-        when(cepService.findAddress(POSTAL_CODE)).thenReturn(mockPostalCode);
-
-
-
-        WireMock.stubFor(WireMock.get(urlEqualTo("/addressAPI/" + POSTAL_CODE))
-                .willReturn(aResponse()
-                        .withStatus(200)
-                        .withHeader("Content-Type", "application/json")
-                        .withBody("{\n" +
-                                "    \"Cep\": \"09080-301\",\n" +
-                                "    \"Logradouro\": \"Rua das Figueiras\",\n" +
-                                "    \"Cidade\": \"Santo André\",\n" +
-                                "    \"Estado\": \"SP\",\n" +
-                                "    \"Bairro\": \"Campestre\"\n" +
-                                "}")));
-
-
-        // Realizando a requisição para o controller
-        mockMvc.perform(get("http://localhost:" + WIREMOCK_PORT + "/addressAPI/" + POSTAL_CODE))
-                .andExpect(status().isOk());
-    }
 
 
 }

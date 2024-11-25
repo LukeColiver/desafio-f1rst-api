@@ -58,3 +58,7 @@ springdoc:
     filter: true
     path: /api-endereco-documentation
     tryItOutEnabled: true
+sonar:
+  host:
+    url: http://localhost:9000
+  login: sqa_7cd6f9928f8de3a47db1048dd90c45b2d5b6283e
