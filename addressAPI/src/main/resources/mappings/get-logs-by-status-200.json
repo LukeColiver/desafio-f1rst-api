@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/addressAPI/api/logs/by-status",
+    "queryParameters": {
+      "responseStatus": {
+        "equalTo": "200"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": [
+      {
+        "id": "673f9b8ad09fb771d242b914",
+        "callData": "(cep=09080-301, Logradouro=Rua das Figueiras, Cidade=Santo André, Estado=SP, Bairro=Campestre)",
+        "responseStatus": "200",
+        "callTimestamp": "21/11/2024 - 17:43:54"
+      },
+      {
+        "id": "6740be43a7146b0deca24d1c",
+        "callData": "(cep=01001-000, Logradouro=Praça da Sé, Cidade=São Paulo, Estado=SP, Bairro=Sé)",
+        "responseStatus": "200",
+        "callTimestamp": "22/11/2024 - 14:24:19"
+      },
+      {
+        "id": "6740c231afac0c06f25cb575",
+        "callData": "(cep=09080-301, Logradouro=Rua das Figueiras, Cidade=Santo André, Estado=SP, Bairro=Campestre)",
+        "responseStatus": "200",
+        "callTimestamp": "22/11/2024 - 14:40:50"
+      }
+    ]
+  }
+}

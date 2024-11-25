@@ -1,0 +1,31 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/addressAPI/api/logs/by-status",
+    "queryParameters": {
+      "responseStatus": {
+        "equalTo": "500"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": [
+      {
+        "id": "6740be82a7146b0deca24d1d",
+        "callData": "Internal server error: [400 Bad Request] during [GET] to [https://viacep.com.br/ws/01001/json] [ViaCepClient#findAddress(String)]: [<!DOCTYPE HTML>\n<html lang=\"pt-br\">\n\n<head>\n  <title>ViaCEP 400</title>\n  <meta charset=\"utf-8\" />\n  <style type=\"text/css\">\n      h1 {\n          color: #555;\n          text-align: center;\n          f... (494 bytes)]",
+        "responseStatus": "500",
+        "callTimestamp": "22/11/2024 - 14:25:03"
+      },
+      {
+        "id": "6740d5a8ad4d724bcb9d7b4a",
+        "callData": "Internal server error: Cannot invoke \"br.com.lucasoliveira.apiendereco.service.CepService.findAddress(String)\" because \"this.cepService\" is null",
+        "responseStatus": "500",
+        "callTimestamp": "22/11/2024 - 16:04:08"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/addressAPI/api/logs"
+  },
+  "response": {
+    "status": 400,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "status": "error",
+      "message": "Postal code not found: Postal code 09080333 not found.",
+      "responseStatus": "400",
+      "callTimestamp": "22/11/2024 - 14:29:25"
+    }
+  }
+}

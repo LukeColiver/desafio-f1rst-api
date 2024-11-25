@@ -1,16 +1,10 @@
 <configuration>
-    <!-- Configurando o formato da data -->
     <timestamp key="logDate" datePattern="dd-MM-yyyy HH:mm:ss" />
-
-    <!-- Configuração do appender de console -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <!-- A data formatada com o padrão dd-MM-yyyy -->
             <pattern>%d{${logDate}} %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
-
-    <!-- Configuração da raiz do log -->
     <root level="INFO">
         <appender-ref ref="CONSOLE" />
     </root>
