@@ -6,13 +6,24 @@ Este é um projeto de API para buscar endereços a partir de um CEP (Código de 
 
 A aplicação `addressAPI` é um serviço RESTful que permite consultar endereços utilizando o número do CEP. Além disso, ela integra funcionalidades de resiliência e Feign para chamadas externas, e fornece métricas de monitoramento através do Spring Boot Actuator.
 
-## Tecnologias
+## Tecnologias Utilizadas
 
-- **Spring Boot 3.x**: Framework principal para a construção da API.
-- **Spring Cloud**: Para implementar funcionalidades como Feign Client e Circuit Breaker com Resilience4j.
-- **MongoDB**: Banco de dados NoSQL para persistência de dados.
-- **JUnit 5 e Mockito**: Para testes unitários e de integração.
-- **Lombok**: Para reduzir a boilerplate code no código fonte.
+- **Java 17**: Linguagem de programação usada no projeto.
+- **Spring Boot 3.3.5**: Framework principal utilizado para a construção da aplicação.
+- **Spring Cloud**: Utilizado para implementar recursos de microserviços e resiliência, incluindo **Resilience4j** e **OpenFeign**.
+- **MongoDB**: Banco de dados NoSQL utilizado para armazenar os dados.
+- **WireMock**: Ferramenta de mocking utilizada para simulação de respostas de APIs externas em testes.
+- **JUnit 5**: Framework de testes utilizado para testes unitários e de integração.
+
+## Dependências Principais
+
+- `spring-boot-starter-web`: Para construir a API RESTful.
+- `spring-boot-starter-data-mongodb`: Para integração com MongoDB.
+- `spring-boot-starter-actuator`: Para monitoramento e métricas.
+- `spring-cloud-starter-circuitbreaker-resilience4j`: Para implementar o padrão de circuito breaker.
+- `spring-cloud-starter-openfeign`: Para comunicação entre microserviços via HTTP.
+- `springdoc-openapi-starter-webmvc-ui`: Para geração automática de documentação OpenAPI e Swagger.
+- `lombok`: Biblioteca para reduzir o boilerplate de código.
 
 ## Funcionalidades
 
