@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/addressAPI/09080301"
+  },
+  "response": {
+    "status": 200,
+    "body": "{\n    \"Cep\": \"09080-301\",\n    \"Logradouro\": \"Rua das Figueiras\",\n    \"Cidade\": \"Santo André\",\n    \"Estado\": \"SP\",\n    \"Bairro\": \"Campestre\"\n}",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

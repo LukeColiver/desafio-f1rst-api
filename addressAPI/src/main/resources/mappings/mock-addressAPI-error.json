@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/addressAPI/09080309"
+  },
+  "response": {
+    "status": 400,
+    "body": "{\n    \"message\": \"Postal code 09080309 not found.\",\n    \"errorCode\": \"400\",\n    \"timestamp\": \"24/11/2024 - 18:48:55\",\n    \"details\": \"The provided postal code was not found in the database.\"\n}",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

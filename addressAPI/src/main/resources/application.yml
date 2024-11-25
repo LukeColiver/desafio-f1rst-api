@@ -3,7 +3,7 @@ spring:
     name: addressAPI
   data:
     mongodb:
-      uri:  mongodb://localhost:27017/logs
+      uri: mongodb://mongodb:27017/logs  # Atualize de localhost para o nome do serviço 'mongodb'
 
 server:
   servlet:
@@ -17,7 +17,6 @@ feign:
         url: https://brasilapi.com.br/
       viacep:
         url: https://viacep.com.br
-
 
 management:
   endpoint:
@@ -48,11 +47,10 @@ logging:
     root: INFO
     com.example: DEBUG
 
-
-
 addressAPI:
   openapi:
     dev-url: http://localhost:8080/api-endereco
+
 springdoc:
   api-docs:
     path: /api-endereco-api-docs
@@ -60,3 +58,7 @@ springdoc:
     filter: true
     path: /api-endereco-documentation
     tryItOutEnabled: true
+sonar:
+  host:
+    url: http://localhost:9000
+  login: sqa_7cd6f9928f8de3a47db1048dd90c45b2d5b6283e
