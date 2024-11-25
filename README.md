@@ -1,10 +1,10 @@
-# API Endereço
+# addressAPI
 
 Este é um projeto de API para buscar endereços a partir de um CEP (Código de Endereçamento Postal). Utilizando o Spring Boot 3.x, o projeto foi desenvolvido para fornecer uma solução simples e eficiente para consultar e manipular endereços de forma automatizada.
 
 ## Descrição
 
-A aplicação `api-endereco` é um serviço RESTful que permite consultar endereços utilizando o número do CEP. Além disso, ela integra funcionalidades de resiliência e Feign para chamadas externas, e fornece métricas de monitoramento através do Spring Boot Actuator.
+A aplicação `addressAPI` é um serviço RESTful que permite consultar endereços utilizando o número do CEP. Além disso, ela integra funcionalidades de resiliência e Feign para chamadas externas, e fornece métricas de monitoramento através do Spring Boot Actuator.
 
 ## Tecnologias
 
@@ -30,7 +30,7 @@ Certifique-se de ter os seguintes programas instalados antes de rodar o projeto:
 - **Maven** para gerenciamento de dependências
 - **MongoDB** rodando localmente ou configurado para conexão.
 
-# Projeto ApiEndereco
+# Projeto addressAPI
 
 Este projeto é uma API construída com **Spring Boot** que oferece funcionalidades relacionadas ao gerenciamento de endereços. Ele segue o padrão recomendado para aplicações Spring Boot.
 
@@ -40,11 +40,11 @@ A estrutura do projeto é a seguinte:
 
 ### Descrição dos Componentes
 
-- **ApiEnderecoApplication.java**: Classe principal do Spring Boot, responsável por inicializar a aplicação.
-- **EnderecoController.java**: Controller que gerencia os endpoints da API relacionados aos endereços.
+- **AddressApplication.java**: Classe principal do Spring Boot, responsável por inicializar a aplicação.
+- **AddressController.java**: Controller que gerencia os endpoints da API relacionados aos endereços.
 - **CepService.java**: Serviço que contém a lógica de negócios para manipulação dos dados de endereço.
-- **Endereco.java**: Modelo de dados que representa um endereço.
-- **application.properties**: Arquivo de configuração da aplicação, onde são definidas propriedades como portas e configurações específicas do Spring Boot.
+- **PostalCode.java**: Modelo de dados que representa um endereço.
+- **application.yml**: Arquivo de configuração da aplicação, onde são definidas propriedades como portas e configurações específicas do Spring Boot.
 
 ## Contribuições
 
@@ -64,8 +64,7 @@ Agradecemos qualquer contribuição para melhorar o projeto!
 Clone este repositório para sua máquina local:
 
 ```bash
-git clone https://github.com/seu-usuario/api-endereco.git
-
+https://github.com/LukeColiver/desafio-f1rst-api.git
 ```
 
 ### 2. Executar a Aplicação
