@@ -92,6 +92,11 @@ GET http://localhost:8080/endereco/{cep}
 
 ```
 
+### 4. Swagger
+```bash
+http://localhost:8080/addressAPI/swagger-ui/index.html#/
+```
+
 #### Executar aplicacao  **Via Maven**
 
 Para rodar o projeto com Maven, navegue até a pasta do projeto e execute o seguinte comando:
