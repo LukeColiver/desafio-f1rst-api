@@ -66,4 +66,15 @@ Clone este repositório para sua máquina local:
 ```bash
 git clone https://github.com/seu-usuario/api-endereco.git
 
+```
+
+### 2. Executar a Aplicação
+
+#### **Via Maven**
+
+Para rodar o projeto com Maven, navegue até a pasta do projeto e execute o seguinte comando:
+
+```bash
+mvn spring-boot:run
+
 
