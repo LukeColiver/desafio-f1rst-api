@@ -67,13 +67,25 @@ Clone este repositório para sua máquina local:
 https://github.com/LukeColiver/desafio-f1rst-api.git
 ```
 
-### 2. Executar a Aplicação
 
-#### **Via Maven**
+### 2. Executar Docker Compose 
+
+```bash
+docker-compose down
+```
+
+### 3. Testar a API
+
+```bash
+GET http://localhost:8080/endereco/{cep}
+
+```
+
+#### Executar aplicacao  **Via Maven**
 
 Para rodar o projeto com Maven, navegue até a pasta do projeto e execute o seguinte comando:
 
 ```bash
 mvn spring-boot:run
-
+```
 
